@@ -20,4 +20,4 @@ const userSchema = new Schema(
 
 // userSchema.index({ email: 1 });
 
-export default model('users', userSchema);
+export default model('user', userSchema);

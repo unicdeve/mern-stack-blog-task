@@ -84,7 +84,6 @@ export const currentUser = (req, res) => {
 };
 
 export const changePassword = (req, res) => {
-  // validate password and confirmPassword
   const { errors, isValid } = validateChangePasswordInput(req.body);
 
   if (!isValid) return res.status(400).json(errors);
