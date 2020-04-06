@@ -74,3 +74,20 @@ export const userArticles = (req, res) => {
       return res.status(400).json(errors);
     });
 };
+
+// get all articles
+export const getArticles = (_, res) => {
+  const errors = {};
+  Article.find({})
+    .then(article => {
+      if (!article) {
+        errors.noArticle = 'You have no article yet.';
+        return res.status(400).json(errors);
+      }
+      return res.json(article);
+    })
+    .catch(() => {
+      errors.noArticle = 'An error occured while finding your article';
+      return res.status(400).json(errors);
+    });
+};
