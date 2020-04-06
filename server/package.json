@@ -1,0 +1,32 @@
+{
+  "name": "user-micro",
+  "description": "Shoge User Microservice: handles User and UserProfile",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "Taiwo Ogunola",
+  "scripts": {
+    "server": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "formidable": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "morgan": "^1.9.1",
+    "nodemailer": "^6.4.2",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-env": "^2.4.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "cross-env": "^6.0.3",
+    "nodemon": "^2.0.1"
+  }
+}
