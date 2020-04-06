@@ -2,11 +2,19 @@ import articleTypes from './article.types';
 
 const initialState = {
   errors: null,
-  loading: false
+  loading: false,
+  articles: []
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
+    case articleTypes.GET_ARTICLES:
+      return {
+        ...state,
+        articles: action.payload,
+        loading: false
+      };
+
     case articleTypes.ARTICLES_LOADING:
       return {
         ...state,

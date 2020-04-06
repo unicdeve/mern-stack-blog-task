@@ -79,6 +79,7 @@ export const userArticles = (req, res) => {
 export const getArticles = (_, res) => {
   const errors = {};
   Article.find({})
+    .populate('user', 'email')
     .then(article => {
       if (!article) {
         errors.noArticle = 'You have no article yet.';
@@ -107,4 +108,14 @@ export const getArticleById = (req, res) => {
       errors.noArticle = 'An error occured while finding your article';
       return res.status(400).json(errors);
     });
+};
+
+export const getArticleImage = (req, res) => {
+  Article.findById(req.params.articleId).then(article => {
+    if (article) {
+      res.set('Content-Type', article.image.contentType);
+      return res.send(article.image.data);
+    }
+    return res.status(404).json({ error: 'Image not found' });
+  });
 };

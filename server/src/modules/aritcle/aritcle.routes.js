@@ -5,7 +5,8 @@ import {
   createEditArticle,
   userArticles,
   getArticles,
-  getArticleById
+  getArticleById,
+  getArticleImage
 } from './aritcle.controller';
 
 const router = Router();
@@ -37,5 +38,10 @@ router.get('/', getArticles);
 // @desc Get Article by ID
 // @access Public
 router.get('/:articleId', getArticleById);
+
+// @route GET api/v1/article/
+// @desc Get Article by ID
+// @access Public
+router.get('/:articleId/image', getArticleImage);
 
 export default router;

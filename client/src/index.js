@@ -10,7 +10,7 @@ import axios from 'axios';
 import store from './redux/store';
 
 if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = 'http://127.0.0.1:8000';
+  axios.defaults.baseURL = 'http://127.0.0.1:4000/api/v1';
 }
 
 ReactDOM.render(
