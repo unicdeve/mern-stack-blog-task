@@ -91,3 +91,20 @@ export const getArticles = (_, res) => {
       return res.status(400).json(errors);
     });
 };
+
+// get article by ID
+export const getArticleById = (req, res) => {
+  const errors = {};
+  Article.findById(req.params.articleId)
+    .then(article => {
+      if (!article) {
+        errors.noArticle = 'You have no article yet.';
+        return res.status(400).json(errors);
+      }
+      return res.json(article);
+    })
+    .catch(() => {
+      errors.noArticle = 'An error occured while finding your article';
+      return res.status(400).json(errors);
+    });
+};

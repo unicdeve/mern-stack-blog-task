@@ -4,7 +4,8 @@ import passport from 'passport';
 import {
   createEditArticle,
   userArticles,
-  getArticles
+  getArticles,
+  getArticleById
 } from './aritcle.controller';
 
 const router = Router();
@@ -31,5 +32,10 @@ router.get(
 // @desc Get all Articles
 // @access Public
 router.get('/', getArticles);
+
+// @route GET api/v1/article/
+// @desc Get Article by ID
+// @access Public
+router.get('/:articleId', getArticleById);
 
 export default router;
