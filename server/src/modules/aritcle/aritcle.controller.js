@@ -57,3 +57,20 @@ export const createEditArticle = (req, res) => {
     });
   });
 };
+
+// get current user's articles
+export const userArticles = (req, res) => {
+  const errors = {};
+  Article.find({ user: req.user.id })
+    .then(article => {
+      if (!article) {
+        errors.noArticle = 'You have no article yet.';
+        return res.status(400).json(errors);
+      }
+      return res.json(article);
+    })
+    .catch(() => {
+      errors.noArticle = 'An error occured while finding your article';
+      return res.status(400).json(errors);
+    });
+};
