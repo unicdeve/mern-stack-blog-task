@@ -34,12 +34,20 @@ export const ArticleContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  @media screen and (max-width: 800px) {
+    margin-left: 0;
+  }
+
   .title {
     font-size: 2rem;
     font-weight: 500;
     color: #51b0f1;
     text-transform: capitalize;
     transition: all 0.3s;
+
+    @media screen and (max-width: 800px) {
+      font-size: 1rem;
+    }
 
     &:hover {
       background: rgba(81, 176, 241, 0.12);
@@ -59,6 +67,10 @@ export const ArticleContentContainer = styled.div`
   .article-user {
     font-size: 1.2rem;
     font-weight: 500;
+
+    @media screen and (max-width: 800px) {
+      font-size: 0.8rem;
+    }
   }
 
   .description {

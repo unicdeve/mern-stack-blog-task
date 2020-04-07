@@ -56,7 +56,6 @@ function LoginForm(props) {
   };
 
   useEffect(() => {
-    console.log('isAuthenticated', isAuthenticated);
     if (isAuthenticated) {
       history.push('/');
     }

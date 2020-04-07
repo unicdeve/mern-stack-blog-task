@@ -5,8 +5,12 @@ export const StyledHeader = styled.div`
   background: #fff;
   padding: 14px;
   box-shadow: 0px 16px 24px #50b0f117;
-  width: 100%;
+  max-width: 100%;
   transition: all 0.7s;
+
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+  }
 `;
 
 export const Container = styled.header`
@@ -18,10 +22,22 @@ export const Container = styled.header`
     display: flex;
     flex-grow: 2;
     justify-content: center;
+
+    @media screen and (max-width: 800px) {
+      justify-content: start;
+    }
   }
 
   .auth-nav {
     padding-right: 15rem;
+
+    @media screen and (max-width: 800px) {
+      padding-right: 0.5rem;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    padding: 5px 10px;
   }
 `;
 
@@ -29,4 +45,9 @@ export const NavLink = styled(Link)`
   color: #51b0f1;
   text-decoration: none;
   padding: 5px 10px;
+
+  @media screen and (max-width: 800px) {
+    padding: 5px;
+    font-size: 80%;
+  }
 `;

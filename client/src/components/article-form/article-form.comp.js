@@ -9,7 +9,6 @@ import authTypes from '../../redux/auth/auth.types';
 
 import FormField from '../form-field/form-field.comp';
 import CustomButton from '../custom-button/custom-button.comp';
-import { selectIsAuthenticated } from '../../redux/auth/auth.selector';
 import { createArticle } from '../../redux/article/article.action';
 import {
   selectArticleLoading,
@@ -19,13 +18,7 @@ import {
 function ArticleForm(props) {
   const imgRef = React.createRef();
 
-  const {
-    history,
-    dispatch,
-    errors: dataErrors,
-    isAuthenticated,
-    loading
-  } = props;
+  const { history, dispatch, errors: dataErrors, loading } = props;
 
   const initialState = {
     email: '',
@@ -84,12 +77,6 @@ function ArticleForm(props) {
   const handleEditImage = () => {
     imgRef.current.click();
   };
-
-  useEffect(() => {
-    if (!isAuthenticated) {
-      history.push('/login');
-    }
-  }, [isAuthenticated, history]);
 
   useEffect(() => {
     if (!isEmpty(dataErrors)) {
@@ -164,7 +151,6 @@ function ArticleForm(props) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  isAuthenticated: selectIsAuthenticated,
   loading: selectArticleLoading,
   errors: selectArticleErrors
 });
