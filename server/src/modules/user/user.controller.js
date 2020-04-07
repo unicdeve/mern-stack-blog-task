@@ -35,6 +35,7 @@ export const register = (req, res) => {
           newUser
             .save()
             .then(user => {
+              const token = generateToken(user);
               const { _id, email } = user;
               const data = {
                 token,

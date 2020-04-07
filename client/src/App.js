@@ -11,6 +11,7 @@ import GlobalStyle from './global-styles';
 import LoginPage from './pages/login/login.page';
 import HomePage from './pages/home/home.page';
 import Layout from './components/layout/layout.comp';
+import SigninPage from './pages/signup/signup.page';
 
 function App({ dispatch }) {
   let userAuth = !isEmpty(localStorage.auth);
@@ -32,6 +33,7 @@ function App({ dispatch }) {
     <Switch>
       <AppRoute exact path='/' layout={Layout} component={HomePage} />
       <Route exact path='/login' component={LoginPage} />
+      <Route exact path='/signup' component={SigninPage} />
 
       <GlobalStyle />
     </Switch>

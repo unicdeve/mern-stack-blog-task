@@ -6,7 +6,7 @@ import { createStructuredSelector } from 'reselect';
 import { useForm } from '../../utils/hooks';
 import isEmpty from '../../utils/isEmpty';
 import authTypes from '../../redux/auth/auth.types';
-import { signinUser } from '../../redux/auth/auth.actions';
+import { signupUser } from '../../redux/auth/auth.actions';
 
 import FormField from '../form-field/form-field.comp';
 import CustomButton from '../custom-button/custom-button.comp';
@@ -16,7 +16,7 @@ import {
   selectAuthErrors
 } from '../../redux/auth/auth.selector';
 
-function LoginForm(props) {
+function SignUpForm(props) {
   const {
     history,
     dispatch,
@@ -27,7 +27,8 @@ function LoginForm(props) {
 
   const initialState = {
     email: '',
-    password: ''
+    password: '',
+    password2: ''
   };
 
   const { values, handleChange, handleSubmit, errors, setErrors } = useForm(
@@ -36,7 +37,7 @@ function LoginForm(props) {
     initialState
   );
 
-  const { email, password } = values;
+  const { email, password, password2 } = values;
 
   function handleSubmitCallback() {
     submitForm();
@@ -52,7 +53,7 @@ function LoginForm(props) {
     const user = {
       ...values
     };
-    dispatch(signinUser(user));
+    dispatch(signupUser(user));
   };
 
   useEffect(() => {
@@ -88,8 +89,18 @@ function LoginForm(props) {
         passwordIcon
       />
 
+      <FormField
+        type='password'
+        name='password2'
+        placeholder='Confirm password'
+        value={password2}
+        error={errors.password2}
+        onChange={handleChange}
+        passwordIcon
+      />
+
       <CustomButton authBtn loading={loading}>
-        Login
+        Sign up
       </CustomButton>
     </form>
   );
@@ -101,4 +112,4 @@ const mapStateToProps = createStructuredSelector({
   errors: selectAuthErrors
 });
 
-export default connect(mapStateToProps)(withRouter(LoginForm));
+export default connect(mapStateToProps)(withRouter(SignUpForm));
