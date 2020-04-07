@@ -32,7 +32,8 @@ function ArticleForm(props) {
     title: '',
     description: '',
     image: '',
-    imagePreview: ''
+    imagePreview: '',
+    _id: ''
   };
 
   const {
@@ -44,7 +45,7 @@ function ArticleForm(props) {
     setErrors
   } = useForm(handleSubmitCallback, onChangeCallback, initialState);
 
-  const { title, description, imagePreview, image } = values;
+  const { title, description, imagePreview, image, _id } = values;
 
   function handleSubmitCallback() {
     submitForm();
@@ -58,6 +59,8 @@ function ArticleForm(props) {
 
   const submitForm = () => {
     let formData = new FormData();
+
+    if (_id) formData.append('articleId', _id);
 
     if (image && image.name) {
       formData.append('image', image, image.name);
@@ -94,6 +97,14 @@ function ArticleForm(props) {
     }
   }, [dataErrors, setErrors]);
 
+  const { article } = props;
+
+  useEffect(() => {
+    if (!isEmpty(article)) {
+      setValues({ ...article });
+    }
+  }, [article, setValues]);
+
   return (
     <form noValidate onSubmit={handleSubmit} className='auth-form'>
       <div className='img-wrapper'>
@@ -101,7 +112,7 @@ function ArticleForm(props) {
           <img
             src={
               imagePreview ||
-              `http://127.0.0.1:4000/api/v1/article/${'id-for now'}/image/`
+              `http://127.0.0.1:4000/api/v1/article/${_id}/image/`
             }
             width='100'
             height='100'
@@ -145,7 +156,7 @@ function ArticleForm(props) {
         onChange={handleChange}
       />
 
-      <CustomButton authBtn loading={loading}>
+      <CustomButton authBtn loading={loading} type='submit'>
         Post
       </CustomButton>
     </form>

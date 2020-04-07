@@ -1,22 +1,30 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+export const ArticleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4rem;
+`;
+
+export const ArticleActionsWrapper = styled.div`
+  text-align: right;
+`;
 
 export const ArticleWrapper = styled.div`
   display: flex;
-  margin-bottom: 3rem;
-  border-radius: 2rem 0 0 2rem;
-  box-shadow: 0px 16px 24px #50b0f117;
+  flex-direction: column;
+  border: 0.2px solid rgba(0, 0, 0, 0.25);
+  height: 100%;
 `;
 
 export const ArticleImageWrapper = styled.div`
-  width: 10rem;
+  height: 60vh;
 `;
 
 export const ArticleImage = styled.img`
-  width: 100%;
   height: 100%;
+  width: 100%;
   object-fit: cover;
-  border-radius: 2rem 0 0 2rem;
 `;
 
 export const ArticleContentContainer = styled.div`
@@ -57,8 +65,4 @@ export const ArticleContentContainer = styled.div`
     font-size: 1rem;
     margin-top: 0.9rem;
   }
-`;
-
-export const ArticleTitle = styled(Link)`
-  text-decoration: none;
 `;

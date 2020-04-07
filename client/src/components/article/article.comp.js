@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
@@ -24,16 +25,16 @@ export default function Article({ article }) {
   return (
     <ArticleWrapper>
       <ArticleImageWrapper>
-        <ArticleImage
-          key={id}
-          src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}
-          width='100'
-          alt='article-img'
-        />
+        <Link to={`/${id}`}>
+          <ArticleImage
+            src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}
+            alt='article-img'
+          />
+        </Link>
       </ArticleImageWrapper>
 
       <ArticleContentContainer>
-        <ArticleTitle to={`/explore/article/${id}`} className='title'>
+        <ArticleTitle to={`/${id}`} className='title'>
           {title}
         </ArticleTitle>
         <div className='article-user'>@{username}</div>

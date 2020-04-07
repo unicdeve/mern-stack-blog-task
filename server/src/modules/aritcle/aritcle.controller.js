@@ -23,6 +23,8 @@ export const createEditArticle = (req, res) => {
     const articleFields = formatArticleFields(fields, files);
     articleFields.user = req.user.id;
 
+    console.log('fields.articleId', fields.articleId);
+
     Article.findOne({
       _id: fields.articleId,
       user: req.user.id
@@ -47,7 +49,7 @@ export const createEditArticle = (req, res) => {
         // update article
         else {
           Article.findOneAndUpdate(
-            { user: req.user.id },
+            { _id: fields.articleId },
             { $set: articleFields },
             { new: true }
           )

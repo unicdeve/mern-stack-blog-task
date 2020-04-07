@@ -1,7 +1,7 @@
 import axios from 'axios';
 import articleTypes from './article.types';
 
-export const getUserArticles = token => dispatch => {
+export const getUserArticles = () => dispatch => {
   dispatch({ type: articleTypes.ARTICLES_LOADING });
   axios
     .get('/article/user/articles/')
@@ -26,6 +26,24 @@ export const getAllArticles = () => dispatch => {
     .then(res => {
       dispatch({
         type: articleTypes.GET_EXPLORE_ARTICLES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: articleTypes.ARTICLES_ERROS
+      });
+    });
+};
+
+export const getArticle = articleId => dispatch => {
+  dispatch({ type: articleTypes.ARTICLES_LOADING });
+  axios
+    .get(`/article/${articleId}`)
+    .then(res => {
+      dispatch({
+        type: articleTypes.GET_ARTICLE,
         payload: res.data
       });
     })

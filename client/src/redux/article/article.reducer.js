@@ -5,7 +5,8 @@ const initialState = {
   loading: false,
   success: false,
   articles: [],
-  exploreArticles: []
+  exploreArticles: [],
+  article: {}
 };
 
 const authReducer = (state = initialState, action) => {
@@ -24,9 +25,17 @@ const authReducer = (state = initialState, action) => {
         loading: false
       };
 
+    case articleTypes.GET_ARTICLE:
+      return {
+        ...state,
+        article: action.payload,
+        loading: false
+      };
+
     case articleTypes.CREATE_ARTICLE:
-      state.articles = [action.payload, ...state.articles];
-      state.exploreArticles = [action.payload, ...state.exploreArticles];
+      // state.articles = [action.payload, ...state.articles];
+      // state.exploreArticles = [action.payload, ...state.exploreArticles];
+      // state.article = {};
 
       return {
         ...state,

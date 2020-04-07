@@ -14,6 +14,7 @@ import Layout from './components/layout/layout.comp';
 import SigninPage from './pages/signup/signup.page';
 import ExplorePage from './pages/explore/explore.page';
 import CreateArticle from './pages/create-article/create-article.page';
+import SingleArticle from './pages/single-article/single-article.page';
 
 function App({ dispatch }) {
   let userAuth = !isEmpty(localStorage.auth);
@@ -34,19 +35,30 @@ function App({ dispatch }) {
   return (
     <Switch>
       <AppRoute exact path='/' layout={Layout} component={HomePage} />
-      <AppRoute
-        exact
-        path='/explore/articles'
-        layout={Layout}
-        component={ExplorePage}
-      />
+
       <AppRoute
         exact
         path='/create-new-article'
         layout={Layout}
         component={CreateArticle}
       />
+
+      <AppRoute
+        exact
+        path='/:articleId'
+        layout={Layout}
+        component={SingleArticle}
+      />
+
+      <AppRoute
+        exact
+        path='/explore/articles'
+        layout={Layout}
+        component={ExplorePage}
+      />
+
       <Route exact path='/login' component={LoginPage} />
+
       <Route exact path='/signup' component={SigninPage} />
 
       <GlobalStyle />
