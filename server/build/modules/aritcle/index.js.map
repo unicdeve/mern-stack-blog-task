@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/modules/aritcle/index.js"],"names":["default"],"mappings":";;;;;;;;;;;4CAASA,O","file":"index.js","sourcesContent":["export { default as ArticleRoutes } from './aritcle.routes';\n"]}
