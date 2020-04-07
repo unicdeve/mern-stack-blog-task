@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 export const ArticleWrapper = styled.div`
   display: flex;
   margin-bottom: 3rem;
+  border-radius: 2rem 0 0 2rem;
+  box-shadow: 0px 16px 24px #50b0f117;
 `;
 
 export const ArticleImageWrapper = styled.div`
@@ -14,6 +16,7 @@ export const ArticleImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-radius: 2rem 0 0 2rem;
 `;
 
 export const ArticleContentContainer = styled.div`
