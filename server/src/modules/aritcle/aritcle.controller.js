@@ -51,6 +51,7 @@ export const createEditArticle = (req, res) => {
             { $set: articleFields },
             { new: true }
           )
+            .populate('user', 'email')
             .then(article => res.json(article))
             .catch(err => {
               errors.general = 'There was an error updating your article';

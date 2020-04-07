@@ -16,7 +16,9 @@ function Header({ isAuthenticated, currentUser }) {
       <Container>
         <div className='nav'>
           <NavLink to='/'>Articles</NavLink>
-          <NavLink to='/create-new-article'>New Article</NavLink>
+          <NavLink to={`${isAuthenticated ? '/create-new-article' : '/login'}`}>
+            New Article
+          </NavLink>
           <NavLink to='/explore/articles'>Explore</NavLink>
         </div>
 

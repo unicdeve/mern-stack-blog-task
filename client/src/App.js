@@ -13,6 +13,7 @@ import HomePage from './pages/home/home.page';
 import Layout from './components/layout/layout.comp';
 import SigninPage from './pages/signup/signup.page';
 import ExplorePage from './pages/explore/explore.page';
+import CreateArticle from './pages/create-article/create-article.page';
 
 function App({ dispatch }) {
   let userAuth = !isEmpty(localStorage.auth);
@@ -38,6 +39,12 @@ function App({ dispatch }) {
         path='/explore/articles'
         layout={Layout}
         component={ExplorePage}
+      />
+      <AppRoute
+        exact
+        path='/create-new-article'
+        layout={Layout}
+        component={CreateArticle}
       />
       <Route exact path='/login' component={LoginPage} />
       <Route exact path='/signup' component={SigninPage} />

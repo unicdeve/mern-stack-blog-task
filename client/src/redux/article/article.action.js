@@ -36,3 +36,25 @@ export const getAllArticles = () => dispatch => {
       });
     });
 };
+
+export const createArticle = (formData, history) => dispatch => {
+  dispatch({ type: articleTypes.ARTICLES_LOADING });
+  axios
+    .post('/article/', formData)
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: articleTypes.CREATE_ARTICLE,
+        payload: res.data
+      });
+
+      history.push('/');
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: articleTypes.ARTICLES_ERROS,
+        payload: err.response.data
+      });
+    });
+};

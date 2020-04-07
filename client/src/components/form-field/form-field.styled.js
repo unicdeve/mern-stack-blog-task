@@ -40,10 +40,12 @@ export const CustomInput = styled.input`
 `;
 
 export const CustomTextArea = styled.textarea`
-  width: 100%;
+  max-width: 100%;
   border-radius: 31px;
   padding: 10px 20px;
   font-size: 18px;
+  background: #f5f8fb;
+  border: none;
 
   &:focus {
     outline: none;

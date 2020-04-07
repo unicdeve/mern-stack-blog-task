@@ -12,8 +12,8 @@ body {
 }
 
 .auth-container {
-  height: 100vh;
-  width: 100vw;
+  height: calc(100vh - 10rem);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,4 +33,19 @@ body {
 
 .auth-header:hover {
   background: rgba(81, 176, 241, 0.12);
+}
+
+.img-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.img-wrapper .fa-image {
+  color: rgba(81, 176, 241, 0.12);
+  cursor: pointer;
+}
+
+.error-feedback {
+  color: #dc3545;
+  font-size: 10px;
 }
