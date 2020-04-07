@@ -14,7 +14,7 @@ export default app => {
   app.use(compression());
   app.use(express.json());
   app.use(passport.initialize());
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
   app.use(cors());
+  // app.use(enforce.HTTPS({ trustProtoHeader: true }));
   passportConfig(passport);
 };
