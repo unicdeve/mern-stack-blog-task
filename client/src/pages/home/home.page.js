@@ -2,39 +2,34 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { getAllArticles } from '../../redux/article/article.action';
+import { getUserArticles } from '../../redux/article/article.action';
 import {
   selectArticles,
   selectArticleLoading
 } from '../../redux/article/articles.selector';
-import Article from '../../components/article/article.comp';
+import Articles from '../../components/articles/articles.comp';
+import { selectIsAuthenticated } from '../../redux/auth/auth.selector';
 
 function HomePage(props) {
-  const { articles, getArticles } = props;
-
-  console.log(articles);
+  const { articles, getArticles, isAuthenticated, loading } = props;
 
   useEffect(() => {
-    getArticles();
-  }, [getArticles]);
+    if (isAuthenticated) {
+      getArticles();
+    }
+  }, [getArticles, isAuthenticated]);
 
-  return (
-    <div>
-      {articles &&
-        articles.map(article => (
-          <Article key={article._id} article={article} />
-        ))}
-    </div>
-  );
+  return <Articles articles={articles} loading={loading} />;
 }
 
 const mapStateToProps = createStructuredSelector({
   articles: selectArticles,
-  loading: selectArticleLoading
+  loading: selectArticleLoading,
+  isAuthenticated: selectIsAuthenticated
 });
 
 const mapDispatchToProps = {
-  getArticles: getAllArticles
+  getArticles: getUserArticles
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

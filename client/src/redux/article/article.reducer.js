@@ -3,7 +3,8 @@ import articleTypes from './article.types';
 const initialState = {
   errors: null,
   loading: false,
-  articles: []
+  articles: [],
+  exploreArticles: []
 };
 
 const authReducer = (state = initialState, action) => {
@@ -12,6 +13,13 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         articles: action.payload,
+        loading: false
+      };
+
+    case articleTypes.GET_EXPLORE_ARTICLES:
+      return {
+        ...state,
+        exploreArticles: action.payload,
         loading: false
       };
 

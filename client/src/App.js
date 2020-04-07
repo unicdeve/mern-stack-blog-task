@@ -12,6 +12,7 @@ import LoginPage from './pages/login/login.page';
 import HomePage from './pages/home/home.page';
 import Layout from './components/layout/layout.comp';
 import SigninPage from './pages/signup/signup.page';
+import ExplorePage from './pages/explore/explore.page';
 
 function App({ dispatch }) {
   let userAuth = !isEmpty(localStorage.auth);
@@ -24,7 +25,7 @@ function App({ dispatch }) {
 
       dispatch({
         type: authTypes.SIGN_IN_SUCCESS,
-        payload: auth.data
+        payload: auth
       });
     }
   }, [userAuth, dispatch]);
@@ -32,6 +33,12 @@ function App({ dispatch }) {
   return (
     <Switch>
       <AppRoute exact path='/' layout={Layout} component={HomePage} />
+      <AppRoute
+        exact
+        path='/explore/articles'
+        layout={Layout}
+        component={ExplorePage}
+      />
       <Route exact path='/login' component={LoginPage} />
       <Route exact path='/signup' component={SigninPage} />
 

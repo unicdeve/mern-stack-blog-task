@@ -7,6 +7,11 @@ export const selectArticles = createSelector(
   article => article.articles
 );
 
+export const selectExploreArticles = createSelector(
+  [selectArticle],
+  article => article.exploreArticles
+);
+
 export const selectArticleLoading = createSelector(
   [selectArticle],
   selectArticle => selectArticle.loading
