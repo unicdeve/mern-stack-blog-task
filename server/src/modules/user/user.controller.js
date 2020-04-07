@@ -35,9 +35,13 @@ export const register = (req, res) => {
           newUser
             .save()
             .then(user => {
-              const token = generateToken(user);
+              const { _id, email } = user;
+              const data = {
+                token,
+                user: { _id, email }
+              };
 
-              return res.status(201).json({ success: true, token });
+              return res.status(201).json({ success: true, data });
             })
             .catch(err => console.log(err));
         });
@@ -51,7 +55,7 @@ export const login = (req, res) => {
 
   if (!isValid) return res.status(400).json(errors);
 
-  const { email, password } = req.body;
+  const { email, password: inputPassword } = req.body;
 
   User.findOne({ email }).then(user => {
     if (!user) {
@@ -60,10 +64,20 @@ export const login = (req, res) => {
       return res.status(400).json(errors);
     }
 
-    bcrypt.compare(password, user.password).then(isMatch => {
+    const { _id, email, password } = user;
+
+    bcrypt.compare(inputPassword, password).then(isMatch => {
       if (isMatch) {
         const token = generateToken(user);
-        return res.json({ success: true, token });
+        const data = {
+          token,
+          user: {
+            _id,
+            email
+          }
+        };
+
+        return res.json({ success: true, data });
       } else {
         // wrong password
         errors.general = 'Wrong email/password';

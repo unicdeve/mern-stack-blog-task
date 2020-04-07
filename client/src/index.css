@@ -3,7 +3,30 @@
 body {
   margin: 0;
   background: #fff;
-  box-sizing: border-box;
   overflow-x: hidden;
   font-family: Alegreya sans;
+}
+
+.auth-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-header {
+  font-weight: 500;
+  margin-bottom: 2rem;
+  color: #51b0f1;
+}
+
+.auth-header a {
+  color: #51b0f1;
+  text-decoration: none;
+}
+
+.auth-header:hover {
+  background: rgba(81, 176, 241, 0.12);
 }
