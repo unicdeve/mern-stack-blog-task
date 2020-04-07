@@ -108,7 +108,7 @@ function ArticleForm(props) {
   return (
     <form noValidate onSubmit={handleSubmit} className='auth-form'>
       <div className='img-wrapper'>
-        {imagePreview ? (
+        {imagePreview || _id ? (
           <img
             src={
               imagePreview ||
