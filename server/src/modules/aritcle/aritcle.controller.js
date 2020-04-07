@@ -26,35 +26,39 @@ export const createEditArticle = (req, res) => {
     Article.findOne({
       _id: fields.articleId,
       user: req.user.id
-    }).then(article => {
-      if (!article) {
-        if (articleFields.image && articleFields.image.data) {
-          const newArticle = new Article(articleFields);
-          newArticle
-            .save()
+    })
+      .then(article => {
+        if (!article) {
+          if (articleFields.image && articleFields.image.data) {
+            const newArticle = new Article(articleFields);
+            newArticle
+              .save()
+              .then(article => res.json(article))
+              .catch(err => {
+                console.log(err);
+                errors.general = 'There was an error saving your article';
+                return res.status(500).json(errors);
+              });
+          } else {
+            errors.image = 'Image is required';
+            return res.status(400).json(errors);
+          }
+        }
+        // update article
+        else {
+          Article.findOneAndUpdate(
+            { user: req.user.id },
+            { $set: articleFields },
+            { new: true }
+          )
             .then(article => res.json(article))
             .catch(err => {
-              errors.general = 'There was an error saving your article';
+              errors.general = 'There was an error updating your article';
               return res.status(500).json(errors);
             });
         }
-        errors.image = 'Image is required';
-        return res.status(400).json(errors);
-      }
-      // update article
-      else {
-        Article.findOneAndUpdate(
-          { user: req.user.id },
-          { $set: articleFields },
-          { new: true }
-        )
-          .then(article => res.json(article))
-          .catch(err => {
-            errors.general = 'There was an error updating your article';
-            return res.status(500).json(errors);
-          });
-      }
-    });
+      })
+      .catch(err => console.log(err));
   });
 };
 
@@ -62,6 +66,7 @@ export const createEditArticle = (req, res) => {
 export const userArticles = (req, res) => {
   const errors = {};
   Article.find({ user: req.user.id })
+    .populate('user', 'email')
     .then(article => {
       if (!article) {
         errors.noArticle = 'You have no article yet.';
@@ -97,6 +102,7 @@ export const getArticles = (_, res) => {
 export const getArticleById = (req, res) => {
   const errors = {};
   Article.findById(req.params.articleId)
+    .populate('user', 'email')
     .then(article => {
       if (!article) {
         errors.noArticle = 'You have no article yet.';
@@ -111,11 +117,13 @@ export const getArticleById = (req, res) => {
 };
 
 export const getArticleImage = (req, res) => {
-  Article.findById(req.params.articleId).then(article => {
-    if (article) {
-      res.set('Content-Type', article.image.contentType);
-      return res.send(article.image.data);
-    }
-    return res.status(404).json({ error: 'Image not found' });
-  });
+  Article.findById(req.params.articleId)
+    .populate('user', 'email')
+    .then(article => {
+      if (article) {
+        res.set('Content-Type', article.image.contentType);
+        return res.send(article.image.data);
+      }
+      return res.status(404).json({ error: 'Image not found' });
+    });
 };
