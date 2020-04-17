@@ -1,5 +1,5 @@
 {
-  "name": "ArticlesRESTApi",
+  "name": "article",
   "description": "Article API",
   "version": "1.0.0",
   "main": "index.js",
@@ -9,10 +9,9 @@
     "server": "cross-env NODE_ENV=development nodemon --exec babel-node src/server.js",
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
-    "build": "cd client && npm run build",
-    "build-server": "npm run clean && npm run build-babel",
-    "start": "npm run build-server && node ./build/server.js",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "build": "npm run clean && npm run build-babel && cd client && npm run build",
+    "start": "npm run build && node ./build/server.js",
+    "heroku-postbuild": "cd client && npm install && npm install && npm run build"
   },
   "dependencies": {
     "babel-preset-env": "^1.7.0",

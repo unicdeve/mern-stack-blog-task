@@ -1,17 +1,33 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, Redirect } from 'react-router-dom';
+import { selectIsAuthenticated } from '../redux/auth/auth.selector';
+import { createStructuredSelector } from 'reselect';
 
-function AppRoute({ component: Component, layout: Layout, ...rest }) {
+function AppRoute({
+  component: Component,
+  layout: Layout,
+  isAuthenticated,
+  ...rest
+}) {
   return (
     <Route
       {...rest}
-      render={props => (
-        <Layout>
-          <Component {...props} />
-        </Layout>
-      )}
+      render={props =>
+        isAuthenticated === true ? (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        ) : (
+          <Redirect to={'/login'} />
+        )
+      }
     />
   );
 }
 
-export default AppRoute;
+const mapStateToProps = createStructuredSelector({
+  isAuthenticated: selectIsAuthenticated
+});
+
+export default connect(mapStateToProps)(AppRoute);

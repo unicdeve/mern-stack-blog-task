@@ -6,5 +6,5 @@ export const generateToken = user => {
     id: user.id,
     email: user.email
   };
-  return jwt.sign(payload, SECRET_OR_KEY, { expiresIn: '24h' });
+  return jwt.sign(payload, SECRET_OR_KEY);
 };

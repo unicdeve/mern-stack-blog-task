@@ -1,6 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
+import lightTheme from './theme/light';
+import darkTheme from './theme/dark';
 
 import setAuthToken from './utils/setAuthToken';
 import isEmpty from './utils/isEmpty';
@@ -32,36 +36,50 @@ function App({ dispatch }) {
     }
   }, [userAuth, dispatch]);
 
+  const stored = localStorage.getItem('isDarkMode');
+  const [isDarkMode, setIsDarkMode] = React.useState(
+    stored === 'true' ? true : false
+  );
+
+  const darkModeClicked = () => {
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('isDarkMode', !isDarkMode);
+  };
+
   return (
     <Switch>
-      <AppRoute exact path='/' layout={Layout} component={HomePage} />
+      <ThemeProvider theme={darkTheme}>
+        <>
+          <GlobalStyle />
 
-      <AppRoute
-        exact
-        path='/create-new-article'
-        layout={Layout}
-        component={CreateArticle}
-      />
+          <Route exact path='/login' component={LoginPage} />
 
-      <AppRoute
-        exact
-        path='/:articleId'
-        layout={Layout}
-        component={SingleArticle}
-      />
+          <Route exact path='/signup' component={SigninPage} />
 
-      <AppRoute
-        exact
-        path='/explore/articles'
-        layout={Layout}
-        component={ExplorePage}
-      />
+          <AppRoute exact path='/' layout={Layout} component={HomePage} />
 
-      <Route exact path='/login' component={LoginPage} />
+          <AppRoute
+            exact
+            path='/create-new-article'
+            layout={Layout}
+            component={CreateArticle}
+          />
 
-      <Route exact path='/signup' component={SigninPage} />
+          <AppRoute
+            exact
+            path='/:articleId'
+            layout={Layout}
+            component={SingleArticle}
+          />
 
-      <GlobalStyle />
+          <AppRoute
+            exact
+            path='/explore/articles'
+            layout={Layout}
+            component={ExplorePage}
+          />
+        </>
+      </ThemeProvider>
     </Switch>
   );
 }

@@ -2,11 +2,17 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledHeader = styled.div`
-  background: #fff;
+  /* background: #fff; */
   padding: 14px;
-  box-shadow: 0px 16px 24px #50b0f117;
+  /* box-shadow: 0px 16px 24px #50b0f117; */
+  border-bottom: ${({ theme }) => theme.colors.tinyBorder};
   max-width: 100%;
   transition: all 0.7s;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  background-color: ${({ theme }) => theme.colors.background};
+  backface-visibility: hidden;
 
   @media screen and (max-width: 800px) {
     padding: 10px;

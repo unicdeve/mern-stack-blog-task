@@ -5,7 +5,8 @@ export const ArticleWrapper = styled.div`
   display: flex;
   margin-bottom: 3rem;
   border-radius: 2rem 0 0 2rem;
-  box-shadow: 0px 16px 24px #50b0f117;
+  box-shadow: ${({ theme }) => theme.colors.boxShadow};
+  height: 10rem;
 
   @media screen and (max-width: 800px) {
     border-radius: 0.5rem 0 0 0.5rem;
@@ -69,7 +70,7 @@ export const ArticleContentContainer = styled.div`
   }
 
   .article-user {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 500;
 
     @media screen and (max-width: 800px) {
