@@ -32,8 +32,8 @@ export const Container = styled.header`
 
     @media screen and (max-width: 800px) {
       padding-right: 0.5rem;
-    } */
-  }
+    } 
+  }*/
 
   @media screen and (max-width: 800px) {
     padding: 5px 10px;

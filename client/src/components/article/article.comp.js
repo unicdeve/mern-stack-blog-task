@@ -4,12 +4,15 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 import {
-  ArticleImage,
+  UserImage,
   ArticleWrapper,
-  ArticleImageWrapper,
+  UserImageWrapper,
   ArticleContentContainer,
-  ArticleTitle
+  ArticleUser,
+  ArticleImageWrapper,
+  ArticleImage
 } from './article.styled';
+import ArticleActions from '../article-actions/article-actions.comp';
 
 export default function Article({ article }) {
   const {
@@ -17,29 +20,42 @@ export default function Article({ article }) {
     title,
     description,
     createdAt,
-    user: { email }
+    user: { email, _id }
   } = article;
 
   const username = email.split('@')[0];
   dayjs.extend(relativeTime);
   return (
     <ArticleWrapper>
-      <ArticleImageWrapper>
-        <Link to={`/${id}`}>
-          <ArticleImage
+      <Link to={`/${id}`}>
+        <UserImageWrapper>
+          <UserImage
             src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}
             alt='article-img'
           />
-        </Link>
-      </ArticleImageWrapper>
+        </UserImageWrapper>
+      </Link>
 
       <ArticleContentContainer>
-        <ArticleTitle to={`/${id}`} className='title'>
-          {title}
-        </ArticleTitle>
-        <div className='article-user'>@{username}</div>
-        <div className='timesince'>{dayjs(createdAt).fromNow()}</div>
-        <div className='description'>{description}</div>
+        <ArticleUser to={`/${_id}`}>
+          <span className='full-name'>Taiwo Ogunola</span>@{username}
+          <span className='dot'> . </span>
+          <span className='timesince'>{dayjs(createdAt).fromNow()}</span>
+        </ArticleUser>
+
+        <div className='text'>{description}</div>
+
+        {/* TODO: place tweet image here if any */}
+        <Link to={`/${id}`}>
+          <ArticleImageWrapper>
+            <ArticleImage
+              src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}
+              alt='article-img'
+            />
+          </ArticleImageWrapper>
+        </Link>
+
+        <ArticleActions />
       </ArticleContentContainer>
     </ArticleWrapper>
   );

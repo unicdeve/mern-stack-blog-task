@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 export const StyledSideBar = styled.div`
   padding: 14px 0;
   margin-right: 2rem;
+
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 
 export const SideBarContainer = styled.div`

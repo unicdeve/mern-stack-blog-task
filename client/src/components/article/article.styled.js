@@ -3,33 +3,29 @@ import { Link } from 'react-router-dom';
 
 export const ArticleWrapper = styled.div`
   display: flex;
-  margin-bottom: 3rem;
-  border-radius: 2rem 0 0 2rem;
-  box-shadow: ${({ theme }) => theme.colors.boxShadow};
-  height: 10rem;
+  border-bottom: ${({ theme }) => theme.colors.tinyBorder};
+  padding: 10px;
 
   @media screen and (max-width: 800px) {
     border-radius: 0.5rem 0 0 0.5rem;
   }
 `;
 
-export const ArticleImageWrapper = styled.div`
-  width: 10rem;
+export const UserImageWrapper = styled.div`
+  width: 4rem;
+  height: 4rem;
 
   @media screen and (max-width: 800px) {
-    width: 5rem;
+    width: 3rem;
+    height: 3rem;
   }
 `;
 
-export const ArticleImage = styled.img`
+export const UserImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 2rem 0 0 2rem;
-
-  @media screen and (max-width: 800px) {
-    border-radius: 0.5rem 0 0 0.5rem;
-  }
+  border-radius: 50%;
 `;
 
 export const ArticleContentContainer = styled.div`
@@ -43,47 +39,55 @@ export const ArticleContentContainer = styled.div`
     margin-left: 0.2rem;
   }
 
-  .title {
-    font-size: 2rem;
-    font-weight: 500;
-    color: #51b0f1;
-    text-transform: capitalize;
-    transition: all 0.3s;
-
-    @media screen and (max-width: 800px) {
-      font-size: 0.9rem;
-    }
-
-    &:hover {
-      background: rgba(81, 176, 241, 0.12);
-    }
-  }
-
-  .article-user,
-  .timesince {
-    color: #c2c2c2;
-  }
-
-  .timesince {
-    font-size: 0.7rem;
-    font-weight: 500;
-  }
-
-  .article-user {
+  .text {
     font-size: 1rem;
-    font-weight: 500;
-
-    @media screen and (max-width: 800px) {
-      font-size: 0.7rem;
-    }
-  }
-
-  .description {
-    font-size: 1rem;
-    margin-top: 0.9rem;
+    margin-top: 0.3rem;
   }
 `;
 
 export const ArticleTitle = styled(Link)`
   text-decoration: none;
+`;
+
+export const ArticleUser = styled(Link)`
+  color: #c2c2c2;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+
+  @media screen and (max-width: 800px) {
+    font-size: 0.6rem;
+  }
+
+  span.full-name {
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.textColor};
+    padding-right: 5px;
+    font-weight: 600;
+  }
+
+  span.dot {
+    margin-top: 50%;
+    color: #c2c2c2;
+    height: 100%;
+    width: 100%;
+  }
+`;
+
+export const ArticleImageWrapper = styled.div`
+  width: 25vw;
+  height: 15rem;
+  margin-top: 1rem;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    height: 10rem;
+  }
+`;
+
+export const ArticleImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 `;

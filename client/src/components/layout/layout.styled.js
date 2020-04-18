@@ -4,6 +4,10 @@ export const LayoutContainer = styled.div`
   max-width: 100%;
   display: flex;
   margin: 0rem 15%;
+
+  @media screen and (max-width: 800px) {
+    margin: 0;
+  }
 `;
 
 export const Container = styled.div`
@@ -11,10 +15,8 @@ export const Container = styled.div`
   border: ${({ theme }) => theme.colors.tinyBorder};
 
   @media screen and (max-width: 800px) {
-    /* padding: 2rem 10px; */
+    width: 100%;
   }
 `;
 
-export const ContentsContainer = styled.div`
-  padding: 10px;
-`;
+export const ContentsContainer = styled.div``;
