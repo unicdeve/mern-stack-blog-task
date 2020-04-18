@@ -15,11 +15,7 @@ function Header({ isAuthenticated, currentUser }) {
     <StyledHeader>
       <Container>
         <div className='nav'>
-          <NavLink to='/'>Articles</NavLink>
-          <NavLink to={`${isAuthenticated ? '/create-new-article' : '/login'}`}>
-            New Article
-          </NavLink>
-          <NavLink to='/explore/articles'>Explore</NavLink>
+          <NavLink to='/'>Twitter-clone</NavLink>
         </div>
 
         <div className='auth-nav'>

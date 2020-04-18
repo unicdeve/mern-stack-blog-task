@@ -56,11 +56,9 @@ function App({ dispatch }) {
 
           <Route exact path='/signup' component={SigninPage} />
 
-          <AppRoute exact path='/' layout={Layout} component={HomePage} />
-
           <AppRoute
             exact
-            path='/create-new-article'
+            path='/create/new-article'
             layout={Layout}
             component={CreateArticle}
           />
@@ -71,6 +69,8 @@ function App({ dispatch }) {
             layout={Layout}
             component={SingleArticle}
           />
+
+          <AppRoute exact path='/' layout={Layout} component={HomePage} />
 
           <AppRoute
             exact

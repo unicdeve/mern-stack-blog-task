@@ -12,13 +12,13 @@ export const StyledButton = styled.button`
   cursor: pointer;
   transition: all 1s;
 
-  &:hover {
+  /* &:hover {
     background: #fff !important;
     border-radius: 36px !important;
     color: #50b0f1 !important;
     border: ${props =>
       props.noBackground ? 'unset' : '1px solid #50b0f1'} !important;
-  }
+  } */
 
   &:focus {
     outline: none;

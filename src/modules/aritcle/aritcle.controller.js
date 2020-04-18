@@ -77,7 +77,8 @@ export const userArticles = (req, res) => {
       }
       return res.json(article);
     })
-    .catch(() => {
+    .catch(err => {
+      console.log(err);
       errors.noArticle = 'An error occured while finding your article';
       return res.status(400).json(errors);
     });

@@ -2,9 +2,6 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const StyledHeader = styled.div`
-  /* background: #fff; */
-  padding: 14px;
-  /* box-shadow: 0px 16px 24px #50b0f117; */
   border-bottom: ${({ theme }) => theme.colors.tinyBorder};
   max-width: 100%;
   transition: all 0.7s;
@@ -22,24 +19,20 @@ export const StyledHeader = styled.div`
 export const Container = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 10px 10px;
 
   .nav {
     display: flex;
     flex-grow: 2;
-    justify-content: center;
-
-    @media screen and (max-width: 800px) {
-      justify-content: start;
-    }
+    justify-content: start;
   }
 
-  .auth-nav {
+  /* .auth-nav {
     padding-right: 15rem;
 
     @media screen and (max-width: 800px) {
       padding-right: 0.5rem;
-    }
+    } */
   }
 
   @media screen and (max-width: 800px) {
