@@ -1,6 +1,7 @@
 export default {
   colors: {
     background: 'rgb(21, 32, 43)',
+    formBorderColor: 'rgb(37, 51, 65)',
     borderColor: 'rgba(21, 32, 43, 0.5)',
     textColor: '#fff',
     hoverColor: '#51b0f1',

@@ -39,6 +39,7 @@ export const getAllArticles = () => dispatch => {
 
 export const getArticle = articleId => dispatch => {
   dispatch({ type: articleTypes.ARTICLES_LOADING });
+  console.log('articleId', articleId);
   axios
     .get(`/article/${articleId}`)
     .then(res => {

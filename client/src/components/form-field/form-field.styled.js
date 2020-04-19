@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const InputWrapper = styled.div`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   width: 100%;
   position: relative;
 
@@ -40,11 +40,13 @@ export const CustomInput = styled.input`
 `;
 
 export const CustomTextArea = styled.textarea`
-  max-width: 100%;
-  border-radius: 31px;
+  width: 100%;
+  height: 3rem;
+  max-height: 6rem;
   padding: 10px 20px;
   font-size: 18px;
-  background: #f5f8fb;
+  color: ${({ theme }) => theme.colors.textColor};
+  background: ${({ theme }) => theme.colors.background};
   border: none;
 
   &:focus {
@@ -53,8 +55,8 @@ export const CustomTextArea = styled.textarea`
 
   &::placeholder {
     letter-spacing: 0;
-    color: #e1e0dd;
-    text-transform: capitalize;
+    color: #c2c2c2;
+    /* text-transform: capitalize; */
   }
 `;
 

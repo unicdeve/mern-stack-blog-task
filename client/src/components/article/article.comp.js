@@ -17,7 +17,6 @@ import ArticleActions from '../article-actions/article-actions.comp';
 export default function Article({ article }) {
   const {
     _id: id,
-    title,
     description,
     createdAt,
     user: { email, _id }
@@ -27,7 +26,7 @@ export default function Article({ article }) {
   dayjs.extend(relativeTime);
   return (
     <ArticleWrapper>
-      <Link to={`/${id}`}>
+      <Link to={`/user/${_id}`}>
         <UserImageWrapper>
           <UserImage
             src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}
@@ -37,7 +36,7 @@ export default function Article({ article }) {
       </Link>
 
       <ArticleContentContainer>
-        <ArticleUser to={`/${_id}`}>
+        <ArticleUser to={`/user/${_id}`}>
           <span className='full-name'>Taiwo Ogunola</span>@{username}
           <span className='dot'> . </span>
           <span className='timesince'>{dayjs(createdAt).fromNow()}</span>
@@ -46,7 +45,7 @@ export default function Article({ article }) {
         <div className='text'>{description}</div>
 
         {/* TODO: place tweet image here if any */}
-        <Link to={`/${id}`}>
+        <Link to={`/articles/${id}`}>
           <ArticleImageWrapper>
             <ArticleImage
               src={`http://127.0.0.1:4000/api/v1/article/${id}/image/`}

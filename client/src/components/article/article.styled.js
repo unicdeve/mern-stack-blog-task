@@ -29,7 +29,7 @@ export const UserImage = styled.img`
 `;
 
 export const ArticleContentContainer = styled.div`
-  margin-left: 2rem;
+  margin-left: 1rem;
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -43,10 +43,6 @@ export const ArticleContentContainer = styled.div`
     font-size: 1rem;
     margin-top: 0.3rem;
   }
-`;
-
-export const ArticleTitle = styled(Link)`
-  text-decoration: none;
 `;
 
 export const ArticleUser = styled(Link)`

@@ -9,6 +9,8 @@ import {
 } from '../../redux/article/articles.selector';
 import Articles from '../../components/articles/articles.comp';
 import { selectIsAuthenticated } from '../../redux/auth/auth.selector';
+import ArticleForm from '../../components/article-form/article-form.comp';
+import { FormWrapper } from './home.styled';
 
 function HomePage(props) {
   const { articles, getArticles, isAuthenticated, loading } = props;
@@ -19,7 +21,14 @@ function HomePage(props) {
     }
   }, [getArticles, isAuthenticated]);
 
-  return <Articles articles={articles} loading={loading} />;
+  return (
+    <>
+      <FormWrapper>
+        <ArticleForm />
+      </FormWrapper>
+      <Articles articles={articles} loading={loading} />
+    </>
+  );
 }
 
 const mapStateToProps = createStructuredSelector({

@@ -9,18 +9,18 @@ body {
 }
 
 .auth-form {
-  max-width: 35rem;
-  padding: 50px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /* max-width: 35rem; */
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  width: 100%;
 }
 
 .auth-container {
-  height: calc(100vh - 10rem);
+  /* height: calc(100vh - 10rem); */
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 .auth-header {

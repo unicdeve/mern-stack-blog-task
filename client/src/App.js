@@ -51,6 +51,7 @@ function App({ dispatch }) {
       <ThemeProvider theme={darkTheme}>
         <>
           <GlobalStyle />
+          <AppRoute exact path='/' layout={Layout} component={HomePage} />
 
           <Route exact path='/login' component={LoginPage} />
 
@@ -65,12 +66,10 @@ function App({ dispatch }) {
 
           <AppRoute
             exact
-            path='/:articleId'
+            path='/articles/:articleId'
             layout={Layout}
             component={SingleArticle}
           />
-
-          <AppRoute exact path='/' layout={Layout} component={HomePage} />
 
           <AppRoute
             exact

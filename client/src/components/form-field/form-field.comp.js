@@ -63,7 +63,6 @@ const FormField = ({
 
             <CustomTextArea
               className={`${error ? 'invalid-input' : ''}`}
-              rows={4}
               placeholder={placeholder}
               name={name}
               onChange={onChange}
